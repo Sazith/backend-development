@@ -1,4 +1,16 @@
+## MVC
+
 MVC = Model-View_Controller
 Model - database define
 View- route define
 Controller - define functionality
+
+## VS Code extension for check server
+
+Thunder Client(working as POSTMAN)
+
+## POST Method
+
+Body - JSON
+query - URL
+param - dynamic value
