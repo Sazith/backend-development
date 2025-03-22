@@ -8,7 +8,7 @@ let checkToken = (req, res, next) => {
     });
   }
 
-  if (req.query.token !== token) {
+  if (req.query.token !== process.env.MyToken) {
     return res.send({
       status: 0,
       msg: "Please Fill the Correct Token",

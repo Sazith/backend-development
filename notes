@@ -14,3 +14,11 @@ Thunder Client(working as POSTMAN)
 Body - JSON
 query - URL
 param - dynamic value
+
+## For Use ENV File
+
+1. Install this : npm i dotenv
+
+2. Add this to index : require("dotenv").config()
+
+console.log(process.env.variable_name);
