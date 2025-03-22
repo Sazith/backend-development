@@ -14,7 +14,7 @@ Thunder Client(working as POSTMAN)
 Body - JSON
 query - URL
 param - dynamic value
-
+bbbb
 ## For Use ENV File
 
 1. Install this : npm i dotenv
@@ -22,3 +22,43 @@ param - dynamic value
 2. Add this to index : require("dotenv").config()
 
 console.log(process.env.variable_name);
+
+## mongodb community server
+
+https://www.mongodb.com/try/download/community
+
+
+## mongodb 
+
+show all database : show dbs / show database
+ create new database : use myschoolBD 
+ create collection : db.createCollection('student')
+ delete the collection : db.student.drop()
+ rename the collection : db.student.renameCollection('students')
+ insert data in collection : db.students.insertOne({
+  'sName': 'Sazith',
+  'semai': 'sazith@gmail.com'
+ })
+ insert many data in collection : db.students.insertMany([
+  {
+  'sName': 'Prince',
+  'semai': 'pince@gmail.com'
+ },
+ {
+  'sName': 'Jahid',
+  'semai': 'jahid@gmail.com'
+ }
+ ])
+
+ see data : db.student.find().pretty()
+
+ Find a data : db.students.find({'sName': 'Sazith'})
+
+ Find a specific data : db.students.findOne({_id:ObjectId('67ded0e3c58fe6dce4b210f7')})
+
+ delete a data : db.students.deleteOne({_id:ObjectId('67ded0e3c58fe6dce4b210f8')})
+
+ update a data : db.students.updateOne(
+  { _id: ObjectId("67ded020c58fe6dce4b210f6") }, 
+  { $set: { sName: "Touhid Khan" } }
+)
