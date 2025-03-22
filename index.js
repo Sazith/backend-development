@@ -1,14 +1,21 @@
 let express = require("express");
 
+require("dotenv").config()
+
 const { checkToken } = require("./checkmiddlewareToken"); 
 
 let app = express();
 
 app.use(express.json()); // mandatory to include if use json
+let PORT = process.env.PORT || 8003; // Changed to avoid port conflict
 
-let PORT = 8002;
 
 let password = "admin123"
+
+console.log(process.env.MyToken);
+console.log(process.env.PORT);
+
+
 
 let checkPassword = (req, res, next) =>{
     // console.log("Welcome");
@@ -84,6 +91,9 @@ app.post("/login", (req, res) => {
 //     "password": "admin123"
 //     }
 
-app.listen(PORT);
+// app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
 
 // 2 hour 0 min
