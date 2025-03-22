@@ -1,15 +1,16 @@
 let express = require("express");
 
+const { checkToken } = require("./checkmiddlewareToken"); 
+
 let app = express();
 
 app.use(express.json()); // mandatory to include if use json
 
 let PORT = 8002;
 
-let token = "12345";
 let password = "admin123"
 
-let checkToken = (req, res, next) =>{
+let checkPassword = (req, res, next) =>{
     // console.log("Welcome");
     // next()
     if(req.query.password == "" || req.query.password == undefined){
@@ -29,33 +30,33 @@ let checkToken = (req, res, next) =>{
 }
 
 
-app.use(checkToken) /// middleware
+app.use(checkPassword) /// middleware
 
-app.use((req, res, next) =>{ /// middleware
+// app.use((req, res, next) =>{ /// middleware
 
-        if(req.query.token == "" || req.query.token == undefined){
-            return res.send({
-                status: 0 ,
-                msg : "Please Fill The Token"
-            })
-        }
+//         if(req.query.token == "" || req.query.token == undefined){
+//             return res.send({
+//                 status: 0 ,
+//                 msg : "Please Fill The Token"
+//             })
+//         }
     
-        if(req.query.token != token){
-            return res.send({
-                status: 0 ,
-                msg : "Please Fill the Correct Token"
-            })
-        }
-        next()
+//         if(req.query.token != token){
+//             return res.send({
+//                 status: 0 ,
+//                 msg : "Please Fill the Correct Token"
+//             })
+//         }
+//         next()
 
-})
+// })
 
 app.get("/", (req, res) => {
   // res.send({ status: 1, msg: "Home page API" })
   res.status(200).json({ status: 1, msg: "Home page API" });
 });
 
-app.get("/news", (req, res) => {
+app.get("/news",checkToken, (req , res) => {
   res.send({ status: 1, msg: "News API" });
 });
 
